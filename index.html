@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-pl">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,31 @@
     <title>Slot Machine</title>
 </head>
 <body>
-    
-</body>
+    <div class="wrap">
+  
+      <h1>Jednoręki bandyta</h1>
+  
+      <section class="game">
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+      </section>
+  
+      <section class="play">
+        <input type="number" placeholder="Podaj stawkę" id="bid">
+        <button id="start">START !</button>
+      </section>
+  
+      <section class="panel">Your CREDITS:  <span class="wallet"></span></section>
+  
+      <section class="score">
+        <span class="result"></span> You've played <span class="number"></span> game, in that <span class="win"></span> wins
+        and <span class="loss"></span> loses
+      </section>
+  
+    </div>
+    <script src="game.js"></script>
+  </body>
+  
+  </html>
 </html>
