@@ -100,4 +100,3 @@ class Result {
   }
 }
 
-Result.moneyWinInGame(true, 10);
