@@ -1,4 +1,4 @@
-// Klasa WAllet
+// WAllet Class
 class Wallet {
   constructor(money) {
     let _money = money;
@@ -31,7 +31,7 @@ class Wallet {
 
 //const wallet = new Wallet(200)
 
-// Klasa Statistics
+// Statistics Class
 
 class Statistics {
     constructor() {
@@ -58,3 +58,13 @@ class Statistics {
 }
 
 const stats = new Statistics();
+
+// Draw class
+
+class Draw {
+  constructor() {
+    this.options = ['red', 'green', 'blue'];
+    let _result = ['red', 'green', 'blue'];
+    this.getDrawResult = () => _result;
+  }
+}
