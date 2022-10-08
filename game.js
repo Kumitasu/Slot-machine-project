@@ -34,27 +34,29 @@ class Wallet {
 // Statistics Class
 
 class Statistics {
-    constructor() {
-        this.gameResults = [{win: true, bid: 2}, {win:false, bid: -10}];
-    }
+  constructor() {
+    this.gameResults = [
+      { win: true, bid: 2 },
+      { win: false, bid: -10 },
+    ];
+  }
 
-    addGameToStatistics(win, bid){
-        let gameResult ={
-            win,
-            bid
-        }
-        console.log(gameResult);
-        this.gameResults.push(gameResult)
-    }
+  addGameToStatistics(win, bid) {
+    let gameResult = {
+      win,
+      bid,
+    };
+    console.log(gameResult);
+    this.gameResults.push(gameResult);
+  }
 
-    showGameStatistics(){
-        let games = this.gameResultslength
-        let wins = this.gameResults.filter(result => result.win).length;
-        let losses = this.gameResults.filter(result => !result.win).length;
-        console.log(wins, losses);
-        return[games, wins, losses]
-    }
-
+  showGameStatistics() {
+    let games = this.gameResultslength;
+    let wins = this.gameResults.filter((result) => result.win).length;
+    let losses = this.gameResults.filter((result) => !result.win).length;
+    console.log(wins, losses);
+    return [games, wins, losses];
+  }
 }
 
 const stats = new Statistics();
@@ -63,16 +65,16 @@ const stats = new Statistics();
 
 class Draw {
   constructor() {
-    this.options = ['red', 'green', 'blue'];
+    this.options = ["red", "green", "blue"];
     let _result = this.drawResult();
     this.getDrawResult = () => _result;
   }
 
   drawResult() {
     let colors = [];
-    for (let i =0; i < this.options.length; i++) {
-      const index = Math.floor(Math.random() * this.options.length)
-      const color = this.options[index]
+    for (let i = 0; i < this.options.length; i++) {
+      const index = Math.floor(Math.random() * this.options.length);
+      const color = this.options[index];
       console.log(color);
       colors.push(color);
     }
@@ -82,16 +84,20 @@ class Draw {
 
 //const draw = new Draw()
 
-
 // Result Class
 
 class Result {
-  static moneyWinInGame(result, bid){
-    if(result) return 3 * bid;
+  static moneyWinInGame(result, bid) {
+    if (result) return 3 * bid;
     else return 0;
-    
+  }
+
+  static checkWinner(draw) {
+    if (
+      draw[0] === draw[1] && draw[1] === draw[2] ||
+      draw[0] !== draw[1] && draw[1] !== draw[2] && draw[0] !== draw[2]) return true;
+      else return false;
   }
 }
 
-Result.moneyWinInGame(true, 10)
-
+Result.moneyWinInGame(true, 10);
