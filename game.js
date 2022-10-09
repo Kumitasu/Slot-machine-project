@@ -1,3 +1,7 @@
+
+
+
+
 // WAllet Class
 class Wallet {
   constructor(money) {
@@ -121,11 +125,11 @@ class Game {
   }
 
   render(){
-
+    console.log('let`s start');
   }
 
   startGame(){
-    console.log('let`s start');
+    
 
   }
 }
