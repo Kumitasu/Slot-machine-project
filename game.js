@@ -1,7 +1,3 @@
-
-
-
-
 // WAllet Class
 class Wallet {
   constructor(money) {
@@ -98,48 +94,58 @@ class Result {
 
   static checkWinner(draw) {
     if (
-      draw[0] === draw[1] && draw[1] === draw[2] ||
-      draw[0] !== draw[1] && draw[1] !== draw[2] && draw[0] !== draw[2]) return true;
-      else return false;
+      (draw[0] === draw[1] && draw[1] === draw[2]) ||
+      (draw[0] !== draw[1] && draw[1] !== draw[2] && draw[0] !== draw[2])
+    )
+      return true;
+    else return false;
   }
 }
 
 // Game Class
 
 class Game {
-  constructor(start){
-
+  constructor(start) {
     this.stats = new Statistics();
     this.wallet = new Wallet(start);
 
-    document.getElementById('start').addEventListener('click', this.startGame);
-    this.spanWallet = document.querySelector('.panel span.wallet');
-    this.boards = document.querySelectorAll('div.color');
-    this.inputBid = document.getElementById('bid');
-    this.spanResult = document.querySelector('.score span.result');
-    this.spanGames = document.querySelector('.score span.number');
-    this.spanWins = document.querySelector('.score span.win');
-    this.spanLosses = document.querySelector('.score span.loss');
+    document.getElementById("start").addEventListener("click", this.startGame);
+    this.spanWallet = document.querySelector(".panel span.wallet");
+    this.boards = document.querySelectorAll("div.color");
+    this.inputBid = document.getElementById("bid");
+    this.spanResult = document.querySelector(".score span.result");
+    this.spanGames = document.querySelector(".score span.number");
+    this.spanWins = document.querySelector(".score span.win");
+    this.spanLosses = document.querySelector(".score span.loss");
 
     this.render();
   }
 
-  render(colors = ['gray', 'gray', 'gray'], money = this.wallet.getWalletValue(), result = "", stats = [0, 0, 0]){
-    this.boards.forEach((board, index) =>{
-      board.style.backgroundColor = colors[index]
-    })
-    
+  render(
+    colors = ["gray", "gray", "gray"],
+    money = this.wallet.getWalletValue(),
+    result = "",
+    stats = [0, 0, 0],
+    bid = 0,
+    wonMoney = 0
+  ) {
+    this.boards.forEach((board, index) => {
+      board.style.backgroundColor = colors[index];
+    });
+
     this.spanWallet.textContent = money;
+    if(result) {
+      result = `Won ${wonMoney}`;
+    } else if(!result && result !="") {
+      result = `Lost ${bid}`
+    }
     this.spanResult.textContent = result;
     this.spanGames.textContent = stats[0];
     this.spanWins.textContent = stats[0];
     this.spanLosses.textContent = stats[0];
   }
 
-  startGame(){
-    
-
-  }
+  startGame() {}
 }
 
 const game = new Game(100);
