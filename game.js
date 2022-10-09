@@ -103,9 +103,11 @@ class Result {
 // Game Class
 
 class Game {
-  constructor(){
+  constructor(start){
+
     this.stats = new Statistics();
-    this.wallet = new Wallet(100);
+    this.wallet = new Wallet(start);
+
     document.getElementById('start').addEventListener('click', this.startGame);
     this.spanWallet = document.querySelector('.panel spanWallet');
     this.boards = document.querySelectorAll('div.color');
@@ -114,6 +116,8 @@ class Game {
     this.spanGames = document.querySelector('.score span.number');
     this.spanWins = document.querySelector('.score span.win');
     this.spanLosses = document.querySelector('.score span.loss');
+
+    this.render();
   }
 
   render(){
@@ -121,6 +125,9 @@ class Game {
   }
 
   startGame(){
+    console.log('let`s start');
 
   }
 }
+
+const game = new Game(200);
