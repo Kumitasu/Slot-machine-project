@@ -113,7 +113,7 @@ class Game {
     this.wallet = new Wallet(start);
 
     document.getElementById('start').addEventListener('click', this.startGame);
-    this.spanWallet = document.querySelector('.panel spanWallet');
+    this.spanWallet = document.querySelector('.panel span.wallet');
     this.boards = document.querySelectorAll('div.color');
     this.inputBid = document.getElementById('bid');
     this.spanResult = document.querySelector('.score span.result');
@@ -124,8 +124,12 @@ class Game {
     this.render();
   }
 
-  render(){
-    console.log('let`s start');
+  render(money = this.wallet.getWalletValue(), result = "", stats = [0, 0, 0]){
+    this.spanWallet.textContent = money;
+    this.spanResult.textContent = result;
+    this.spanGames.textContent = stats[0];
+    this.spanWins.textContent = stats[0];
+    this.spanLosses.textContent = stats[0];
   }
 
   startGame(){
@@ -134,4 +138,4 @@ class Game {
   }
 }
 
-const game = new Game(200);
+const game = new Game(100);
