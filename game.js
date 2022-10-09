@@ -100,3 +100,18 @@ class Result {
   }
 }
 
+// Game Class
+
+class Game {
+  constructor(options){
+
+  }
+
+  render(){
+
+  }
+
+  startGame(){
+    
+  }
+}
