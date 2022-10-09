@@ -124,7 +124,11 @@ class Game {
     this.render();
   }
 
-  render(money = this.wallet.getWalletValue(), result = "", stats = [0, 0, 0]){
+  render(colors = ['gray', 'gray', 'gray'], money = this.wallet.getWalletValue(), result = "", stats = [0, 0, 0]){
+    this.boards.forEach((board, index) =>{
+      board.style.backgroundColor = colors[index]
+    })
+    
     this.spanWallet.textContent = money;
     this.spanResult.textContent = result;
     this.spanGames.textContent = stats[0];
