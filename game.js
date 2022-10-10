@@ -75,7 +75,6 @@ class Draw {
     for (let i = 0; i < this.options.length; i++) {
       const index = Math.floor(Math.random() * this.options.length);
       const color = this.options[index];
-      console.log(color);
       colors.push(color);
     }
     return colors;
@@ -148,6 +147,17 @@ class Game {
   startGame() {
     if(this.inputBid.value < 1) return alert("To small bid");
     const bid = Math.floor(this.inputBid.value);
+
+    if(!this.wallet.checkCanPlay(bid)) {
+      return alert("Low on credit`s")
+    }
+
+    this.wallet.changeWallet(bid, '-');
+
+    this.draw = new Draw ();
+    const colors = this.draw.getDrawResult();
+    const win = Result.checkWinner(colors);
+    
   }
 }
 
