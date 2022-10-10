@@ -46,15 +46,15 @@ class Statistics {
       win,
       bid,
     };
-    console.log(gameResult);
+    // console.log(gameResult);
     this.gameResults.push(gameResult);
   }
 
   showGameStatistics() {
-    let games = this.gameResultslength;
+    let games = this.gameResults.length;
     let wins = this.gameResults.filter((result) => result.win).length;
     let losses = this.gameResults.filter((result) => !result.win).length;
-    console.log(wins, losses);
+    // console.log(wins, losses);
     return [games, wins, losses];
   }
 }
@@ -135,13 +135,14 @@ class Game {
     this.spanWallet.textContent = money;
     if(result) {
       result = `Won ${wonMoney}`;
-    } else if(!result && result !="") {
+    } else if(!result && result !=="") {
       result = `Lost ${bid}`
     }
     this.spanResult.textContent = result;
     this.spanGames.textContent = stats[0];
-    this.spanWins.textContent = stats[0];
-    this.spanLosses.textContent = stats[0];
+    this.spanWins.textContent = stats[1];
+    this.spanLosses.textContent = stats[2];
+    this.inputBid.value = "";
   }
 
   startGame() {
@@ -157,7 +158,18 @@ class Game {
     this.draw = new Draw ();
     const colors = this.draw.getDrawResult();
     const win = Result.checkWinner(colors);
-    
+    const wonMoney = Result.moneyWinInGame(win, bid);
+    this.wallet.changeWallet(wonMoney);
+    this.stats.addGameToStatistics(win, bid);
+
+    this.render(
+      colors,
+      this.wallet.getWalletValue(),
+      win,
+      this.stats.showGameStatistics(),
+      bid,
+      wonMoney
+    )
   }
 }
 
